@@ -1,0 +1,12 @@
+# created-by: streamlit-in-workspaces; skill-version=1.0.0
+definition_version: 2
+entities:
+  app:
+    type: streamlit
+    query_warehouse: COMPUTE_WH
+    compute_pool: SYSTEM_COMPUTE_POOL_CPU
+    main_file: app.py
+    artifacts:
+      - pyproject.toml
+      - app.py
+      - .streamlit/config.toml
