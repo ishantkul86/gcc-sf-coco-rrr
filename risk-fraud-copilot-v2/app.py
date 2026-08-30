@@ -392,8 +392,8 @@ SUGGESTIONS = {
     "LCR": "What is our LCR?",
     "NSFR": "What is our NSFR?",
     "CET1": "What is our CET1 ratio?",
-    "AML alerts (planned in PHASE-II)": "Show AML alerts.",
-    "Suitability exceptions (planned in PHASE-II)": "Show client suitability exceptions.",
+#    "AML alerts (planned in PHASE-II)": "Show AML alerts.",
+#    "Suitability exceptions (planned in PHASE-II)": "Show client suitability exceptions.",
 }
 
 with st.expander(":material/lightbulb: Suggested Questions", expanded=not st.session_state.messages):
