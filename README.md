@@ -5,7 +5,7 @@ This is the repo for the RRR Team on the GCC Snowflake CoCo Hackathon
 
 ## Team Members
 
-| Roll Number | Name |
+| S. No. | Name |
 |------------|------|
 | 1 | Bhanu Prashanthi Murthy |
 | 2 | Srikanth Bhaskar|
