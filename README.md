@@ -215,7 +215,6 @@ If you create or use an `app.py` entry point, the expected integration is:
 - Run app.py file in snowflake.
 
 
-
 ### Architecture Flow
 1. Synthetic / de-identified data generation
 2. Structured data layer
@@ -228,6 +227,39 @@ Deterministic rules engine for  Basel, MiFID, EMIR, UCITS, filings, and counterp
 Streamlit UI for natural-language questions, governed findings, evidence, and downloads
 6. Output layer
 Evidence SQL, alert payload, case summary report, audit note
+
+
+### Architecture Diagram
+
+```mermaid
+flowchart LR
+	A["Synthetic or De-identified Data<br/><br/>Privacy-safe, realistic data for analysis and testing"]
+	B[" Structured Risk Data Layer<br/><br/>Accounts<br/>Transactions<br/>Counterparties<br/>Positions<br/>Regulatory Filings"]
+	C["Policy and Filing Text Layer<br><br>AML Policy<br>Filing Governance Guidance<br>Regulator Notice Snippets"]
+	D["Central Engine: Rules Engine<br/>Applies policies and regulations to data and text<br/>Identifies risks, compliance obligations, and reporting needs"]
+	E["Rule Sets<br/>AML Monitoring Rules<br/>Regulatory Reporting Rules<br/>Exposure and Portfolio Rules"]
+	F["Governed Output<br/>Governed Finding Payload<br/>Standardized, traceable, audit-ready findings"]
+	G["Application Layer: Streamlit Copilot App<br/><br/>NL Question Interface<br/><br/>Evidence SQL<br/><br/>Policy References<br/><br/>Simulated AML Alert<br/>Case Summary Download"]
+
+	A --> B
+	B --> C
+	C --> D
+	D --> E
+	E --> F
+	F --> G
+
+	classDef layer fill:#eaf3ff,stroke:#3b82f6,stroke-width:1.5px,color:#111;
+	classDef engine fill:#fff4e6,stroke:#f59e0b,stroke-width:1.5px,color:#111;
+	classDef output fill:#ecfdf5,stroke:#10b981,stroke-width:1.5px,color:#111;
+	classDef app fill:#f5f3ff,stroke:#8b5cf6,stroke-width:1.5px,color:#111;
+	classDef principle fill:#f9fafb,stroke:#6b7280,stroke-dasharray: 4 2,color:#111;
+
+	class A,B,C layer
+	class D,E engine
+	class F output
+	class G app
+	class H,I,J,K principle
+```
 
 ### End-to-End Workflow
 - Ingest or generate synthetic data
@@ -284,35 +316,4 @@ This matrix maps the requested business questions to the current deterministic r
 | What actions are recommended? | Supported | `top_risks` | Each matched rule returns remediation; top risks now also carries summary remediation. |
 
 
-### Architecture Diagram
-
-```mermaid
-flowchart LR
-	A["Synthetic or De-identified Data<br/><br/>Privacy-safe, realistic data for analysis and testing"]
-	B[" Structured Risk Data Layer<br/><br/>Accounts<br/>Transactions<br/>Counterparties<br/>Positions<br/>Regulatory Filings"]
-	C["Policy and Filing Text Layer<br><br>AML Policy<br>Filing Governance Guidance<br>Regulator Notice Snippets"]
-	D["Central Engine: Rules Engine<br/>Applies policies and regulations to data and text<br/>Identifies risks, compliance obligations, and reporting needs"]
-	E["Rule Sets<br/>AML Monitoring Rules<br/>Regulatory Reporting Rules<br/>Exposure and Portfolio Rules"]
-	F["Governed Output<br/>Governed Finding Payload<br/>Standardized, traceable, audit-ready findings"]
-	G["Application Layer: Streamlit Copilot App<br/><br/>NL Question Interface<br/><br/>Evidence SQL<br/><br/>Policy References<br/><br/>Simulated AML Alert<br/>Case Summary Download"]
-
-	A --> B
-	B --> C
-	C --> D
-	D --> E
-	E --> F
-	F --> G
-
-	classDef layer fill:#eaf3ff,stroke:#3b82f6,stroke-width:1.5px,color:#111;
-	classDef engine fill:#fff4e6,stroke:#f59e0b,stroke-width:1.5px,color:#111;
-	classDef output fill:#ecfdf5,stroke:#10b981,stroke-width:1.5px,color:#111;
-	classDef app fill:#f5f3ff,stroke:#8b5cf6,stroke-width:1.5px,color:#111;
-	classDef principle fill:#f9fafb,stroke:#6b7280,stroke-dasharray: 4 2,color:#111;
-
-	class A,B,C layer
-	class D,E engine
-	class F output
-	class G app
-	class H,I,J,K principle
-```
 
