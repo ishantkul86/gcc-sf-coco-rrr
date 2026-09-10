@@ -1,7 +1,7 @@
-This is the repo for the RRR Team on the GCC Snowflake CoCo Hackathon
-## Team
 
-**RRR** — Snowflake CoCo CLI Hackathon
+## Team **RRR**
+
+This is the repo for the RRR Team on the GCC Snowflake CoCo Hackathon
 
 ## Team Members
 
