@@ -5,7 +5,7 @@ import json
 import streamlit as st
 from datetime import datetime
 from rules_engine import build_alert_payload, build_case_summary, build_no_match_response, get_policy_context, get_supported_rule_categories, get_workflow_steps, match_rule_based, response_to_json
-#from rules_engine1 import build_alert_payload, build_case_summary, build_no_match_response, get_policy_context, get_supported_rule_categories, get_workflow_steps, match_rule_based, response_to_json
+
 try:
     from snowflake.snowpark.context import get_active_session
     from snowflake.snowpark import Session
