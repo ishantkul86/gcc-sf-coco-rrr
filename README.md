@@ -1,3 +1,4 @@
+# Risk, Fraud and Regulatory Intelligence Platform Copilot & Dashboard
 
 ## Team **RRR**
 
@@ -13,22 +14,42 @@ This is the repo for the RRR Team on the GCC Snowflake CoCo Hackathon
 | 4 | Ishant Kulshreshtha |
 
 
+## 1. Business Problem
 
-# Risk, Fraud and Regulatory Intelligence Copilot
+Financial institutions operate across multiple regulatory regimes and large volumes of transactions, positions, counterparties, client data and regulatory filings.
+
+Compliance teams often need to:
+
+- monitor regulatory exposure
+- identify reporting gaps
+- investigate breaches
+- review AML/KYC exceptions
+- understand filing status
+- investigate suspicious activity
+- produce evidence for controls and audits
+- prepare regulatory submissions
+
+The **RRR team** worked on a Snowflake-based solution to **develop the Risk and Fraud Copilot application and an interactive dashboard application** to simplify regulatory reporting, monitor compliance, and identify reporting gaps. The solution leverages **Snowflake capabilities such as Cortex (Cortex AI/Copilot), Streamlit, and Snowflake data storage** to provide data insights.
 
 
+## 2. Solution Overview
 
-## Regulatory Reporting Dashboard :-
+Risk, Fraud & Regulatory Intelligence Platform is a Snowflake-powered compliance intelligence solution designed for financial institutions.
 
-A Streamlit-based regulatory reporting dashboard for monitoring compliance, exposure, and reporting gaps across multiple financial regulations, including Basel III, MiFID II, AIFMD, EMIR, UCITS, and AML/KYC.
+It Contain two applications.
+
+### Application 1. Regulatory Reporting Dashboard :-
+
+A Snowflake Streamlit based regulatory reporting dashboard for monitoring compliance, exposure, and reporting gaps across multiple financial regulations, including **Basel III, MiFID II, AIFMD, EMIR, UCITS, and AML/KYC.**
 
 This dashboard provides a consolidated regulatory reporting and compliance-monitoring interface across major buy-side and capital markets regulations, helping teams identify exposure, reporting completeness, and control breaches in a monthly reporting cycle.
 
-### Overview
+#### Overview
 
-This application connects to Snowflake and presents month-based regulatory reporting views for investment funds, transactions, positions, counterparties, and client due diligence data. It is designed to support compliance teams, risk teams, and reporting operations with a single dashboard for cross-regime monitoring.
+This application connects to Snowflake and presents month-based regulatory reporting views for investment funds, transactions, positions, counterparties, and client due diligence data. 
+It is designed to support compliance teams, risk teams, and reporting operations with a single dashboard for cross-regime monitoring.
 
-### Key Capabilities
+#### Key Capabilities
 
 - Connects to Snowflake using Streamlit's connection API
 - Loads reporting periods dynamically from a date dimension
@@ -44,85 +65,17 @@ This application connects to Snowflake and presents month-based regulatory repor
 - Supports CSV export for each reporting section
 - Highlights missing reporting attributes, breaches, and regulatory gaps
 
-### Data Source
+#### Regulatory Coverage
 
-The dashboard queries data from the Snowflake schema:
+| Regulation | Monitoring |
+|---|---|
+| Basel III | Exposure, VaR, leverage, concentration |
+| MiFID II | Transaction reporting, execution quality |
+| AIFMD | AUM, leverage, filings, deadlines |
+| EMIR | Derivatives, counterparties, clearing |
+| UCITS | Concentration, leverage, liquidity |
+| AML/KYC | Risk ratings and review status |
 
-- `REGULATORY_DW.REG_MODEL`
-
-It relies on fact and dimension tables such as:
-
-- `FACT_POSITION`
-- `FACT_TRANSACTION`
-- `FACT_REGULATORY_REPORT`
-- `DIM_DATE`
-- `DIM_FUND`
-- `DIM_SECURITY`
-- `DIM_COUNTERPARTY`
-- `DIM_GEOGRAPHY`
-- `DIM_ACCOUNT`
-- `DIM_TRADE_MODEL`
-- `DIM_REGULATORY_JURISDICTION`
-
-### Functional Areas
-
-#### Basel III
-Summarizes fund-level risk and capital exposure metrics, including:
-
-- total exposure
-- VaR at 95% and 99%
-- weighted leverage
-- concentration breaches
-- position counts
-
-#### MiFID II
-Tracks transaction reporting and execution quality metrics, including:
-
-- total trades
-- total notional
-- best execution pass rates
-- algo execution activity
-- reporting completion
-- missing venue MIC identifiers
-
-#### AIFMD
-Surfaces in-scope alternative fund reporting details, including:
-
-- total AUM
-- leverage
-- reporting obligations
-- domicile
-- report submission status
-- submission deadlines
-- breaches reported
-
-#### EMIR
-Focuses on derivatives exposure and counterparty reporting, including:
-
-- OTC derivatives
-- central clearing eligibility
-- CSA coverage
-- exposure by counterparty
-- collateral and margin requirements
-
-#### UCITS
-Monitors UCITS fund compliance, including:
-
-- AUM
-- leverage ratio
-- concentration breaches
-- max single-position concentration
-- derivative exposure
-- liquidity-related concerns
-
-#### AML/KYC
-Tracks client risk and due diligence status, including:
-
-- AML risk ratings
-- KYC review dates
-- overdue and due-soon reviews
-- domicile and regulatory zone
-- client type and classification
 
 #### Reporting Gaps and Breaches
 Identifies transactions and positions that cannot be properly reported or that violate regime requirements. Gap categories include:
@@ -138,46 +91,34 @@ Identifies transactions and positions that cannot be properly reported or that v
 - OTC clearing or CSA issues
 - UCITS leverage or liquidity concerns
 
-### User Flow
+#### Architecture Diagram
 
-1. The user selects a reporting month from the sidebar.
-2. The app derives the reporting period start and end dates.
-3. Each tab queries Snowflake for that reporting slice.
-4. Metrics, charts, and detail tables are rendered.
-5. Users can export tab-specific datasets as CSV files.
+```mermaid
+flowchart TB
+    A[Regulatory App] --> C[Snowflake] --> B[Dashboard with Month Filter] --> E[Tabs]
+    E --> F[Basel III]
+    E --> G[MiFID II]
+    E --> H[AIFMD]
+    E --> I[EMIR]
+    E --> J[UCITS]
+    E --> K[AML/KYC]
+    E --> L[Reporting Gaps]
 
-### Technical Notes
+    style A fill:#F8FAFC,stroke:#475569,color:#0F172A
+    style C fill:#CCFBF1,stroke:#0F766E,color:#0F172A
+    style B fill:#DBEAFE,stroke:#2563EB,color:#0F172A
+    style E fill:#FCE7F3,stroke:#BE185D,color:#0F172A
+    style D fill:#FEF3C7,stroke:#D97706,color:#0F172A
+    style F fill:#E0F2FE,stroke:#0284C7,color:#0F172A
+    style G fill:#EDE9FE,stroke:#7C3AED,color:#0F172A
+    style H fill:#DCFCE7,stroke:#16A34A,color:#0F172A
+    style I fill:#FEE2E2,stroke:#DC2626,color:#0F172A
+    style J fill:#FEF9C3,stroke:#CA8A04,color:#0F172A
+    style K fill:#F3E8FF,stroke:#9333EA,color:#0F172A
+    style L fill:#FFE4E6,stroke:#E11D48,color:#0F172A
+```
 
-- The app uses `st.connection("snowflake")` for database access.
-- All query loaders are memoized with `st.cache_data`.
-- A manual refresh button clears all cached query results.
-- The UI is organized with tabs, metrics, charts, and data tables.
-- The app assumes Snowflake data quality and schema consistency for regulatory analytics.
-
-## Intended Audience
-
-This dashboard is suitable for:
-
-- compliance analysts
-- regulatory reporting teams
-- fund operations teams
-- risk managers
-- internal audit or control functions
-
-### Environment Requirements
-
-Expected runtime dependencies include:
-
-- Python
-- Streamlit
-- Snowflake connection configured through Streamlit
-- Access to the `REGULATORY_DW.REG_MODEL` schema
-
-
-
-
-
-## Risk Fraud Copilot V2 :- 
+### Application 2. Risk & Fraud Copilot
 
 Risk Fraud Copilot utilizes raw regulatory data and provides the capability to ask regulatory questions in plain English and get governed, evidence-backed answers from enterprise data.
 
@@ -189,47 +130,44 @@ It is useful for cases like:
 - giving management a quick view of top risks, overdue controls, and remediation actions
 - making demo or hackathon workflows usable for business users who understand compliance questions but do not know the underlying schema
 
+****It Copilot utilizes raw regulatory data and provides the capability to ask regulatory questions in plain English and get governed, evidence-backed answers from enterprise data.
+****
+For example:
 
-### App Flow
+> Show critical regulatory breaches.
+> Generate the MiFID transaction report.
 
-If you create or use an `app.py` entry point, the expected integration is:
+The Copilot routes the question to a deterministic rule, executes the associated evidence query and returns a governed response.
 
-1. Read a user question from the UI or CLI.
-2. Pass that question into `match_rule_based()` from `rules_engine.py`.
-3. Render the returned finding, severity, regulation, evidence SQL, remediation, and audit note.
-4. Optionally render policy context with `get_policy_context()`.
-5. For AML matches, optionally build alert output with `build_alert_payload()` and case-summary output with `build_case_summary()`.
+### Governed Response
 
-### Key Files
-- `app.py`: Its application layer and have the code for Streamlit copilot chat UI which accepts the user’s question and renders the output back to the screen.
-- `rules_engine.py`: is the decision and response layer. It contains the rule library, question matchers, policy references, SQL evidence queries, and helper functions that build structured responses. Its job is to take a plain-language question and return a governed response with fields like finding, severity, regulation, SQL, remediation, and audit note.
+Each response can contain:
 
-
-### Run Notes
-
-- Python version: 3.11+
-- Declared dependencies are in `pyproject.toml`.
-- The project description indicates a Streamlit-based demo app, but no `app.py` file currently exists in this workspace.
-- If you want a runnable UI entry point, create `app.py` or `streamlit_app.py` and wire it to `rules_engine.py` using the pattern above.
-- The Copilot V2 Streamlit entry point in this repo is `app.py`.
-- Run app.py file in snowflake.
+- Finding
+- Severity
+- Regulation
+- Evidence SQL
+- Policy context
+- Remediation
+- Audit note
+- Alert payload
+- Case summary
 
 
-### Architecture Flow
-1. Synthetic / de-identified data generation
-2. Structured data layer
-Account, transaction, counterparty, position, filing, and jurisdiction datasets
-3. Policy and filing text layer
-AML policy excerpts, filing governance guidance, regulator notice snippets
-4. Rules and reasoning layer
-Deterministic rules engine for  Basel, MiFID, EMIR, UCITS, filings, and counterparty controls
-5. Copilot application layer
-Streamlit UI for natural-language questions, governed findings, evidence, and downloads
-6. Output layer
-Evidence SQL, alert payload, case summary report, audit note
+#### Few Sample Rules Mapped in Application for reference
+
+| Question | Status | Rule Key / Mapping | Notes |
+| --- | --- | --- | --- |
+| Generate MiFID transaction report. | Supported | `mifid` | Returns MiFID II reporting exceptions and evidence SQL. |
+| Generate AIFMD Annex IV report. | Supported | `aifmd` | Returns Annex IV reporting status and evidence SQL. |
+| Explain breach X | Planned / Schema-only | `breach_explain` | Live matching is disabled until `FACT_COMPLIANCE_BREACH` exists and is populated. |
+| What is our LCR? | Partial | `lcr` | New proxy metric only; formal LCR inputs are not modeled. |
+| What is our NSFR? | Partial | `nsfr` | New proxy metric only; formal ASF/RSF components are not modeled. |
+| Show controls breached today | Supported | `critical_breaches` | Approximated by current breach inventory, though not time-bucketed to intraday controls. |
+| What are today's top risks? | Supported | `top_risks` | New summary rule returns top risk themes by issue volume. |
 
 
-### Architecture Diagram
+#### Architecture Diagram
 
 ```mermaid
 flowchart LR
@@ -261,59 +199,99 @@ flowchart LR
 	class H,I,J,K principle
 ```
 
-### End-to-End Workflow
-- Ingest or generate synthetic data
-- Transform into governed compliance entities
-- Ask a natural-language question
-- Match question to risk/compliance scenario
-- Execute evidence query
-- Attach policy context
-- Produce finding, alert, and report artifact
-
-### Guardrails
-- Deterministic control routing in rules mode
-- Evidence-backed outputs only
-- Structured response contract
-- Clear audit note and remediation
-- Utilize rule_engine when LLM not available
 
 
-### Sample Rules Matrix for refernce
+## 3. How the Two Applications Work Together
 
-This matrix maps the requested business questions to the current deterministic rules in the app.
+The Dashboard and Copilot serve different user needs.
 
-| Question | Status | Rule Key / Mapping | Notes |
-| --- | --- | --- | --- |
-| Generate MiFID transaction report. | Supported | `mifid` | Returns MiFID II reporting exceptions and evidence SQL. |
-| Generate AIFMD Annex IV report. | Supported | `aifmd` | Returns Annex IV reporting status and evidence SQL. |
-| Generate Basel III capital report. | Partial | `basel_capital` | New proxy report; not a formal capital return because CET1 and RWA facts are not modeled. |
-| Create compliance attestation. | Supported | `compliance_attestation` | Returns attestation support data and evidence SQL. |
-| Prepare regulator submission package. | Supported | `submission_package` | Returns submission support package data and evidence SQL. |
-| Show all regulatory breaches | Partial | `critical_breaches` | New high-priority breach inventory, but not a complete enterprise breach register. |
-| Show critical breaches | Supported | `critical_breaches` | Returns the material breaches currently modeled. |
-| Explain breach X | Planned / Schema-only | `breach_explain` | Live matching is disabled until `FACT_COMPLIANCE_BREACH` exists and is populated. |
-| Show evidence for breach X | Planned / Schema-only | `breach_evidence` | Live matching is disabled until `FACT_COMPLIANCE_BREACH` exists and is populated. |
-| Which funds exceed leverage limits? | Supported | `leverage` | Direct leverage breach query exists. |
-| Which exposures exceed limits? | Supported | `concentration` | Uses concentration breach logic. |
-| What is our LCR? | Partial | `lcr` | New proxy metric only; formal LCR inputs are not modeled. |
-| What is our NSFR? | Partial | `nsfr` | New proxy metric only; formal ASF/RSF components are not modeled. |
-| What is our CET1 ratio? | Partial | `cet1` | New proxy metric only; explicit CET1 and RWA tables are not modeled. |
-| Show concentration risk | Supported | `concentration` | Direct concentration breach query exists. |
-| Show top counterparties | Supported | `counterparty` | Returns largest counterparty exposures. |
-| Show suspicious transactions | Partial | `aml_structuring` | Mapped to one suspicious-pattern rule, not a complete suspicious activity inventory. |
-| Show AML alerts | Planned / Schema-only | `aml_alerts` | Live matching stays gated until `FACT_AML_ALERT` is created and manually refreshed from the AML rule scenarios. |
-| Show unusual trading activity | Partial | `aml_velocity` | Mapped to burst activity logic, not a full market-abuse or surveillance layer. |
-| Show best execution exceptions | Supported | `mifid` | Covered by MiFID compliance gap logic. |
-| Show client suitability exceptions | Planned / Schema-only | `suitability_exceptions` | Live matching is disabled until `DIM_CLIENT_SUITABILITY_ASSESSMENT` exists and is populated. |
-| Generate MiFID report | Supported | `mifid` | Same as MiFID transaction reporting check. |
-| Generate AIFMD report | Supported | `aifmd` | Same as Annex IV status check. |
-| Generate Basel III report | Partial | `basel_capital` | Supported through a capital proxy, not a full Basel reporting pack. |
-| Show pending regulatory filings | Supported | `filing` | Filing status and overdue/late logic already exists. |
-| Show audit trail for transaction X | Planned / Schema-only | `transaction_audit_trail` | Live matching is disabled until `FACT_TRANSACTION_AUDIT_TRAIL` exists and is populated. |
-| Show controls breached today | Supported | `critical_breaches` | Approximated by current breach inventory, though not time-bucketed to intraday controls. |
-| What are today's top risks? | Supported | `top_risks` | New summary rule returns top risk themes by issue volume. |
-| Summarize compliance posture | Supported | `top_risks` | Returns a management summary across major issue classes. |
-| What actions are recommended? | Supported | `top_risks` | Each matched rule returns remediation; top risks now also carries summary remediation. |
+| Dashboard | Copilot |
+|---|---|
+| Visual monitoring | Natural-language investigation |
+| KPIs and charts | Governed findings |
+| Monthly reporting | Ad-hoc questions |
+| Cross-regulation overview | Root-cause investigation |
+| Reporting gaps | Evidence SQL |
+| CSV exports | Case summaries |
+| Management view | Analyst workflow |
+
+### Example workflow
+
+1. Compliance manager opens the Dashboard.
+2. Dashboard identifies a concentration breach.
+3. User asks the Copilot:
+   "Which funds are causing the concentration breach?"
+4. Copilot matches the question to the concentration rule.
+5. Evidence SQL is generated/executed.
+6. Finding and remediation are returned.
+7. User can use the evidence for investigation or reporting.
+
+
+
+## 4. Snowflake Data Source
+
+The dashboard queries data from the Snowflake schema:
+
+- `REGULATORY_DW.REG_MODEL`
+
+It relies on fact and dimension tables such as:
+
+- `FACT_POSITION`
+- `FACT_TRANSACTION`
+- `FACT_REGULATORY_REPORT`
+- `DIM_DATE`
+- `DIM_FUND`
+- `DIM_SECURITY`
+- `DIM_COUNTERPARTY`
+- `DIM_GEOGRAPHY`
+- `DIM_ACCOUNT`
+- `DIM_TRADE_MODEL`
+- `DIM_REGULATORY_JURISDICTION`
+
+
+
+## 5. Project Structure
+
+```text
+gcc-sf-coco-rrr/
+│
+├── regulatory-dashboard/
+│   ├── streamlit_app.py
+│   └── ...
+│
+│
+├── risk-fraud-copilot-v2/
+│   ├── app.py
+│   ├── rules_engine.py
+│   └── ...
+│
+├── cortex/
+│   └── ...
+│
+├── README.md
+└── LICENSE
+```
+
+
+
+### Environment Requirements
+
+Expected runtime dependencies include:
+
+- Python
+- Streamlit
+- Snowflake connection configured through Streamlit
+- Access to the `REGULATORY_DW.REG_MODEL` schema
+
+#### Regulatory Reporting Dashboard
+- The Dashboard Streamlit entry point in this repo is `streamlit_app.py`.
+- Run app.py file in snowflake.
+
+#### Risk Fraud Copilot V2 :- 
+- The Copilot V2 Streamlit entry point in this repo is `app.py`.
+- Run app.py file in snowflake.
+
+
 
 
 
