@@ -16,7 +16,7 @@ This is the repo for the RRR Team on the GCC Snowflake CoCo Hackathon
 
 ## 1. Business Problem
 
-Financial institutions operate across multiple regulatory regimes and large volumes of transactions, positions, counterparties, client data and regulatory filings.
+Banks and NBFCs generate large volumes of transaction, account, credit, and compliance data, but risk and regulatory investigations are still largely manual and fragmented.
 
 Compliance teams often need to:
 
@@ -29,7 +29,7 @@ Compliance teams often need to:
 - produce evidence for controls and audits
 - prepare regulatory submissions
 
-The **RRR team** worked on a Snowflake-based solution to **develop the Risk and Fraud Copilot application and an interactive dashboard application** to simplify regulatory reporting, monitor compliance, and identify reporting gaps. The solution leverages **Snowflake capabilities such as Cortex (Cortex AI/Copilot), Streamlit, and Snowflake data storage** to provide data insights.
+The **RRR team** worked on a Snowflake-based solution to **develop the Risk and Fraud Copilot application and an interactive dashboard application** to simplify regulatory reporting, monitor compliance, and identify reporting gaps. The solution leverages **Snowflake capabilities such as Cortex (Cortex AI/Copilot), Streamlit, and Snowflake data storage** to bring financial data and regulatory knowledge together, delivering governed, explainable and evidence-backed insights.
 
 
 ## 2. Solution Overview
