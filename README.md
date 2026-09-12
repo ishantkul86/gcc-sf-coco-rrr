@@ -29,14 +29,17 @@ Compliance teams often need to:
 - produce evidence for controls and audits
 - prepare regulatory submissions
 
-The **RRR team** worked on a Snowflake-based solution to **develop the Risk and Fraud Copilot application and an interactive dashboard application** to simplify regulatory reporting, monitor compliance, and identify reporting gaps. The solution leverages **Snowflake capabilities such as Cortex (Cortex AI/Copilot), Streamlit, and Snowflake data storage** to bring financial data and regulatory knowledge together, delivering governed, explainable and evidence-backed insights.
+The **RRR team** developed a Snowflake-based solution featuring two key applications:
+- **Risk & Fraud Copilot** — Enables users to investigate risk and fraud scenarios using natural-language questions and receive governed, explainable, and evidence-backed insights.
+- **Regulatory Dashboard** — Provides an interactive view of regulatory compliance, reporting gaps, and regulatory reporting activities.
 
+The solution leverages **Snowflake capabilities such as CoCo, Cortex (Cortex AI/Copilot), Streamlit, and Snowflake data storage** to bring financial data and regulatory knowledge together, delivering governed, explainable and evidence-backed insights.<br />
+
+ **Snowflake CoCo helps us to accelerate the application delivery lifecycle from planning and development through execution enabling faster time to delivery.**
 
 ## 2. Solution Overview
 
-Risk, Fraud & Regulatory Intelligence Platform is a Snowflake-powered compliance intelligence solution designed for financial institutions.
-
-It Contain two applications.
+Risk, Fraud & Regulatory Intelligence Platform Copilot & Dashboard is a Snowflake powered compliance intelligence solution designed for financial institutions.
 
 ### Application 1. Regulatory Reporting Dashboard :-
 
@@ -108,7 +111,6 @@ flowchart TB
     style C fill:#CCFBF1,stroke:#0F766E,color:#0F172A
     style B fill:#DBEAFE,stroke:#2563EB,color:#0F172A
     style E fill:#FCE7F3,stroke:#BE185D,color:#0F172A
-    style D fill:#FEF3C7,stroke:#D97706,color:#0F172A
     style F fill:#E0F2FE,stroke:#0284C7,color:#0F172A
     style G fill:#EDE9FE,stroke:#7C3AED,color:#0F172A
     style H fill:#DCFCE7,stroke:#16A34A,color:#0F172A
@@ -130,8 +132,8 @@ It is useful for cases like:
 - giving management a quick view of top risks, overdue controls, and remediation actions
 - making demo or hackathon workflows usable for business users who understand compliance questions but do not know the underlying schema
 
-****It Copilot utilizes raw regulatory data and provides the capability to ask regulatory questions in plain English and get governed, evidence-backed answers from enterprise data.
-****
+**It utilizes raw regulatory data and provides the capability to ask regulatory questions in plain English and get governed, evidence-backed answers from enterprise data.**
+
 For example:
 
 > Show critical regulatory breaches.
@@ -198,8 +200,6 @@ flowchart LR
 	class G app
 	class H,I,J,K principle
 ```
-
-
 
 ## 3. How the Two Applications Work Together
 
@@ -285,12 +285,18 @@ Expected runtime dependencies include:
 
 #### Regulatory Reporting Dashboard
 - The Dashboard Streamlit entry point in this repo is `streamlit_app.py`.
-- Run app.py file in snowflake.
+- Run streamlit_app.py file in snowflake.
+
+##### Application Screenshots  
+<img width="1632" height="784" alt="image" src="regulatory-dashboard/regulatory_dashboard.png" />
 
 #### Risk Fraud Copilot V2 :- 
 - The Copilot V2 Streamlit entry point in this repo is `app.py`.
 - Run app.py file in snowflake.
 
+##### Application Screenshots  
+
+<img width="1632" height="916" alt="image" src="risk-fraud-copilot-v2/risk_fraud_copilot.png" />
 
 
 
